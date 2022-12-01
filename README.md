@@ -20,23 +20,24 @@
 ### STEP 01. AWS 설정
 
 01-1. Read Replica 생성
+
 ![image](https://user-images.githubusercontent.com/64416833/205101968-277811d8-96bc-4ed2-bb8e-01c5a31fa333.png)
 
 <br/>
 
 01-2. 읽기 전용 복제본 생성 옵션
 
-1) DB 인스턴스 식별자 작성
+1) DB 인스턴스 식별자 작성<br>
 ![image](https://user-images.githubusercontent.com/64416833/205102510-0915291a-b0f2-4d51-bcf7-5fec04eaf8db.png)
 
-2) 스토리지 자동 조정 활성화 OFF
+2) 스토리지 자동 조정 활성화 OFF<br>
 ![image](https://user-images.githubusercontent.com/64416833/205128642-9f1ee343-e8b2-4618-a335-dab1f45228ed.png)
 
-3) 퍼블릭 액세스 가능
+3) 퍼블릭 액세스 가능<br>
 ![image](https://user-images.githubusercontent.com/64416833/205128855-f744796e-163d-425e-ad63-34d05aee3769.png)
 
 
-3. 읽기 전용 복제본 2개 생성
+3. 읽기 전용 복제본 2개 생성<br>
 ![image](https://user-images.githubusercontent.com/64416833/205104055-cf751f04-ea56-48c3-90c6-61bd95152295.png)
 
 <br/>
