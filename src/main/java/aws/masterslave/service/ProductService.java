@@ -55,7 +55,6 @@ public class ProductService {
         return findProduct;
     }
 
-
     @Transactional
     public Product productOrderWithPessimisticLock(Long productId) {
         Product findProduct = productRepository.findByIdWithPessimisticLock(productId);
@@ -74,4 +73,8 @@ public class ProductService {
         return productRepository.findByProductName(productName).orElseThrow();
     }
 
+    @Transactional
+    public void delete() {
+        productRepository.deleteAll();
+    }
 }

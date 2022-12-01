@@ -1,5 +1,6 @@
 package aws.masterslave.service;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,13 +16,19 @@ class ProductServiceSimpleTest {
     private ProductService productService;
 
     @BeforeEach
-    public void init() {
+    public void start() {
         // Product => 100L, "상품", 1000
         productService.create();
     }
 
+    @AfterEach
+    public void end() {
+        // Product => 100L, "상품", 1000
+        productService.delete();
+    }
+
     @Test
-    @DisplayName("Redisson Test >> ")
+    @DisplayName("Redisson Simple Test >> 재고: 996")
     public void 레디슨() throws Exception {
         // given
         Long findProductId = productService.read("상품").getId();
@@ -37,7 +44,7 @@ class ProductServiceSimpleTest {
     }
 
     @Test
-    @DisplayName("PessimisticLock Test >> ")
+    @DisplayName("PessimisticLock Simple Test >> 재고: 996")
     public void 비관적_락() throws Exception {
         // given
         Long findProductId = productService.read("상품").getId();
@@ -50,5 +57,14 @@ class ProductServiceSimpleTest {
 
         // then
         assertThat(productService.read("상품").getStock()).isEqualTo(1000 - 4);
+    }
+
+    @Test
+    @DisplayName("ONLY SLAVE")
+    public void SLAVE_읽기() throws Exception {
+        for (int i = 1; i <= 10; i++) {
+            productService.read("상품").getId();
+            System.out.println("SLAVE = " + i);
+        }
     }
 }

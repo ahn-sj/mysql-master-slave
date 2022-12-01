@@ -1,8 +1,6 @@
 package aws.masterslave.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +9,11 @@ import javax.persistence.Id;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
+@AllArgsConstructor
+@Data
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long seller;
@@ -29,10 +28,12 @@ public class Product {
         this.stock = stock;
     }
 
-    public void decrease() {
+    public Integer decrease() {
         if (this.stock - 1 < 0) {
-            throw new RuntimeException("Not Exist Stock Amount");
+            System.out.println("재고 없음");
+            return 0;
         }
-        this.stock = stock - 1;
+        this.stock = this.stock - 1;
+        return this.stock;
     }
 }
