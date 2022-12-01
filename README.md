@@ -85,6 +85,15 @@ https://velog.io/@backtony/Spring-AWS-RDS로-MySQL-Replication-적용하기-feat
 
     ![image](https://user-images.githubusercontent.com/64416833/205138549-184dc2f7-8d02-425a-9be3-37d49e4bcf21.png)
 
+<br/>
+
+3. JMeter
+- Case: time: 7sec , Request: 200
+
+    ![image](https://user-images.githubusercontent.com/64416833/205143335-e9c1416e-cf0b-48bc-9da6-d26662eb9d33.png)
+
+<br/>
+
 ---
 
 <br/>

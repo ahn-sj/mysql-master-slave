@@ -5,12 +5,11 @@ import aws.masterslave.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.redisson.api.RLock;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.TimeUnit;
+import javax.annotation.PostConstruct;
 
 @RestController
 @Slf4j
@@ -18,6 +17,11 @@ import java.util.concurrent.TimeUnit;
 public class ProductController {
 
     private final ProductService productService;
+
+    @PostConstruct
+    public void init() {
+        productService.create();
+    }
 
     @PostMapping("/v1/order/{productId}")
     public ResponseDto CreatedOrderWithRedisson(@PathVariable Long productId) {
