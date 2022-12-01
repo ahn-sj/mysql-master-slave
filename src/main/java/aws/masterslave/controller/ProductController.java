@@ -1,12 +1,11 @@
 package aws.masterslave.controller;
 
 import aws.masterslave.domain.Product;
-import aws.masterslave.repository.ProductRepository;
+import aws.masterslave.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
-import org.redisson.api.RedissonClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,28 +17,16 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private final RedissonClient redissonClient;
-    private final ProductRepository productRepository;
+    private final ProductService productService;
 
-    @PostMapping("/order/{productId}")
-    public ResponseDto CreatedOrder(@PathVariable Long productId) {
-        RLock lock = redissonClient.getLock(productId.toString());
+    @PostMapping("/v1/order/{productId}")
+    public ResponseDto CreatedOrderWithRedisson(@PathVariable Long productId) {
+        return new ResponseDto(productService.productOrderRedisson(productId));
+    }
 
-        ResponseDto responseDto;
-        
-        try {
-            boolean available = lock.tryLock(5, 2, TimeUnit.SECONDS);
-
-            if (!available) {
-                return null;
-            }
-            responseDto = new ResponseDto(productRepository.findByIdWithRedisson(productId));
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } finally {
-            lock.unlock();
-        }
-        return responseDto;
+    @PostMapping("/v2/order/{productId}")
+    public ResponseDto CreatedOrderWithPessimisticLock(@PathVariable Long productId) {
+        return new ResponseDto(productService.productOrderWithPessimisticLock(productId));
     }
 
     @AllArgsConstructor

@@ -7,13 +7,22 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.persistence.LockModeType;
+import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
+
+    /**
+     * Redisson
+     */
+    @Query("select p from Product p where p.id = :id")
+    Product findByIdWithRedisson(@Param("id") Long id);
 
     /**
      * 비관적 락
      */
     @Lock(value = LockModeType.PESSIMISTIC_WRITE)
     @Query("select p from Product p where p.id = :id")
-    Product findByIdWithRedisson(@Param("id") Long id);
+    Product findByIdWithPessimisticLock(@Param("id") Long id);
+
+    Optional<Product> findByProductName(String productName);
 }
