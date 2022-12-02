@@ -1,6 +1,6 @@
-package aws.masterslave.repository;
+package aws.masterslave.Product.repository;
 
-import aws.masterslave.domain.Product;
+import aws.masterslave.Product.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;

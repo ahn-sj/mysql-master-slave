@@ -1,7 +1,7 @@
-package aws.masterslave.service;
+package aws.masterslave.Product.service;
 
-import aws.masterslave.domain.Product;
-import aws.masterslave.repository.ProductRepository;
+import aws.masterslave.Product.domain.Product;
+import aws.masterslave.Product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;

@@ -23,58 +23,6 @@
 
 ![image](https://user-images.githubusercontent.com/64416833/205225456-e89271b6-1333-4976-8658-7859106b40a4.png)
 
-
-
-<br/>
-
----
-
-<br/>
-
-### STEP 01. AWS 설정
-
-01-1. Read Replica 생성
-
-![image](https://user-images.githubusercontent.com/64416833/205101968-277811d8-96bc-4ed2-bb8e-01c5a31fa333.png)
-
-<br/>
-
-01-2. 읽기 전용 복제본 생성 옵션
-
-1) DB 인스턴스 식별자 작성<br>
-![image](https://user-images.githubusercontent.com/64416833/205102510-0915291a-b0f2-4d51-bcf7-5fec04eaf8db.png)
-
-2) 스토리지 자동 조정 활성화 OFF<br>
-![image](https://user-images.githubusercontent.com/64416833/205128642-9f1ee343-e8b2-4618-a335-dab1f45228ed.png)
-
-3) 퍼블릭 액세스 가능<br>
-![image](https://user-images.githubusercontent.com/64416833/205128855-f744796e-163d-425e-ad63-34d05aee3769.png)
-
-
-3. 읽기 전용 복제본 2개 생성<br>
-![image](https://user-images.githubusercontent.com/64416833/205104055-cf751f04-ea56-48c3-90c6-61bd95152295.png)
-
-<br/>
-
----
-
-
-<br/>
-
-### STEP 02. 프로젝트 초기 설정
-
-![image](https://user-images.githubusercontent.com/64416833/205096022-316eeb40-d0de-4723-9aa8-7e107bd094f1.png)
-
-<br/>
-
----
-
-<br/>
-
-### STEP 03. yml 설정 및 Config 파일 추가
-
-https://velog.io/@backtony/Spring-AWS-RDS로-MySQL-Replication-적용하기-feat.-다중-AZ
-
 <br/>
 
 ---
@@ -88,7 +36,7 @@ https://velog.io/@backtony/Spring-AWS-RDS로-MySQL-Replication-적용하기-feat
 - Required: @Transaction(readOnly=True)
 - Result: Slave
 
-    ![image](https://user-images.githubusercontent.com/64416833/205137490-8537d54a-8b5a-479b-9ac9-89060f0fdd0f.png)
+  ![image](https://user-images.githubusercontent.com/64416833/205137490-8537d54a-8b5a-479b-9ac9-89060f0fdd0f.png)
 
 <br/>
 
@@ -98,14 +46,14 @@ https://velog.io/@backtony/Spring-AWS-RDS로-MySQL-Replication-적용하기-feat
 - Required: STOCK = 1000, THREAD_COUNT = 900
 - Result: STOCK - THREAD_COUNT = 100
 
-    ![image](https://user-images.githubusercontent.com/64416833/205138549-184dc2f7-8d02-425a-9be3-37d49e4bcf21.png)
+  ![image](https://user-images.githubusercontent.com/64416833/205138549-184dc2f7-8d02-425a-9be3-37d49e4bcf21.png)
 
 <br/>
 
 3. JMeter
 - Case: time: 7sec , Request: 200
 
-    ![image](https://user-images.githubusercontent.com/64416833/205143335-e9c1416e-cf0b-48bc-9da6-d26662eb9d33.png)
+  ![image](https://user-images.githubusercontent.com/64416833/205143335-e9c1416e-cf0b-48bc-9da6-d26662eb9d33.png)
 
 <br/>
 
@@ -162,6 +110,54 @@ https://velog.io/@backtony/Spring-AWS-RDS로-MySQL-Replication-적용하기-feat
 ---
 
 <br/>
+
+### STEP 01. AWS 설정
+
+01-1. Read Replica 생성
+
+![image](https://user-images.githubusercontent.com/64416833/205101968-277811d8-96bc-4ed2-bb8e-01c5a31fa333.png)
+
+<br/>
+
+01-2. 읽기 전용 복제본 생성 옵션
+
+1) DB 인스턴스 식별자 작성<br>
+![image](https://user-images.githubusercontent.com/64416833/205102510-0915291a-b0f2-4d51-bcf7-5fec04eaf8db.png)
+
+2) 스토리지 자동 조정 활성화 OFF<br>
+![image](https://user-images.githubusercontent.com/64416833/205128642-9f1ee343-e8b2-4618-a335-dab1f45228ed.png)
+
+3) 퍼블릭 액세스 가능<br>
+![image](https://user-images.githubusercontent.com/64416833/205128855-f744796e-163d-425e-ad63-34d05aee3769.png)
+
+
+3. 읽기 전용 복제본 2개 생성<br>
+![image](https://user-images.githubusercontent.com/64416833/205104055-cf751f04-ea56-48c3-90c6-61bd95152295.png)
+
+<br/>
+
+---
+
+<br/>
+
+### STEP 02. 프로젝트 초기 설정
+
+![image](https://user-images.githubusercontent.com/64416833/205096022-316eeb40-d0de-4723-9aa8-7e107bd094f1.png)
+
+<br/>
+
+---
+
+<br/>
+
+### STEP 03. yml 설정 및 Config 파일 추가
+
+https://velog.io/@backtony/Spring-AWS-RDS로-MySQL-Replication-적용하기-feat.-다중-AZ
+
+<br/>
+
+---
+
 
 ### [참고자료]
 

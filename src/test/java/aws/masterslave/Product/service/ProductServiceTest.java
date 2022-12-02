@@ -1,4 +1,4 @@
-package aws.masterslave.service;
+package aws.masterslave.Product.service;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +27,6 @@ class ProductServiceTest {
 
     @AfterEach
     public void end() {
-        // Product => 100L, "상품", 1000
         productService.delete();
     }
 

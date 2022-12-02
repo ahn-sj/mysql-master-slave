@@ -1,7 +1,7 @@
-package aws.masterslave.controller;
+package aws.masterslave.Product.controller;
 
-import aws.masterslave.domain.Product;
-import aws.masterslave.service.ProductService;
+import aws.masterslave.Product.domain.Product;
+import aws.masterslave.Product.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package aws.masterslave.domain;
+package aws.masterslave.Product.domain;
 
 import lombok.*;
 
