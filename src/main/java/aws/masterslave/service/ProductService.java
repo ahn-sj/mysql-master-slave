@@ -21,6 +21,7 @@ public class ProductService {
 
     public Product productOrderRedisson(Long productId) {
         RLock lock = redissonClient.getLock(productId.toString());
+        log.info("thread-{}, lock: {}",Thread.currentThread().getId(), lock);
 
         Product product;
 
@@ -59,6 +60,8 @@ public class ProductService {
     public Product productOrderWithPessimisticLock(Long productId) {
         Product findProduct = productRepository.findByIdWithPessimisticLock(productId);
         findProduct.decrease();
+
+        System.out.println("findProduct.getStock() = " + findProduct.getStock());
 
         return findProduct;
     }
